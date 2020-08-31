@@ -3,7 +3,7 @@ import Navigation from './Navigation'
 
 function Header(){
     return(
-        <header className="bg-red-500 border-b p-3 flex justify-between items-center shadow-md">
+        <header className="bg-red-600 border-b p-3 flex justify-between items-center shadow-md">
             <span className="text-white font-bold">
                 Pokédex
             </span>

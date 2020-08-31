@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import spinner from '../pokemon/pokeball.gif'
 
 export default class PokemonCard extends Component {
     state = {
       name: '',
       imageUrl: '',
       pokemonIndex: '',
+      imageLoading: true,
+      tooManyRequests: false,
     };
 
 componentDidMount(){
@@ -17,11 +20,30 @@ componentDidMount(){
 
     render() {
           return (
-            <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
-                <div className="bg-gray-300 px-4 py-4 m-2">
-                    <h5>{ this.state.pokemonIndex }</h5>
-                    <div className="bg-white font-bold text-xl mb-2 text-center">{ this.state.name }</div>
-                    <p>{ this.state.imageUrl }</p>
+            <div className="hover:bg-teal-600 hover:shadow-xl bg-red-600 max-w-sm rounded-lg overflow-hidden m-2">
+                <div className="bg-gray-500 rounded m-2">
+                    <h5 className="bg-gray-300 rounded overflow-hidden">{ this.state.pokemonIndex }</h5>
+                    { this.state.imageLoading ? (
+                        <div className="flex flex-wrap justify-center">
+                            <img src={ spinner } style={{ width: '5em', height: '5em' }} />
+                        </div>    
+                    ) : null }
+                    <div className="flex flex-wrap justify-center">
+                        <img onLoad={() => this.setState({ imageLoading: false })} onError={() => this.setState({ tooManyRequests: true })} className="" src={this.state.imageUrl} style={ this.state.tooManyRequests ? {display: "none"} : this.state.imageLoading ? null : {display: "block"}} />
+                    </div>
+                    { this.state.tooManyRequests ? (<h6 className=" bg-red-700 text-white text-center font-bold">
+                        Too Many Requests
+                    </h6>) : null}
+                    <div className="font-bold text-xl mb-2 text-center">
+                        { this.state.name
+                            .toLowerCase()
+                            .split(' ')
+                            .map(
+                                letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+                                )
+                            .join(' ')
+                        }
+                    </div>
                 </div>
             </div>
         )

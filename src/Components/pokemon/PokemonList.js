@@ -9,7 +9,7 @@ export default class PokemonList extends Component {
     };
 
     async componentDidMount(){
-        const res = await axios.get(this.state.url);
+        const res = await axios.get(this.state.url, {params: {limit: 60}});
         this.setState({ pokemon: res.data['results'] })
     }
 
@@ -17,7 +17,7 @@ export default class PokemonList extends Component {
         return (
         <React.Fragment>
             { this.state.pokemon ? (
-            <div class="bg-blue-400">
+            <div>
                 <div class="grid md:grid-cols-3 lg:grid-cols-4">
                 { this.state.pokemon.map(pokemon => (
                  <PokemonCard
@@ -29,7 +29,7 @@ export default class PokemonList extends Component {
                 </div>
             </div>
             ) : ( 
-            <h1>Laoding Pokémon..</h1>
+            <h1>Loading Pokémon..</h1>
             )}
         </React.Fragment>
         );
