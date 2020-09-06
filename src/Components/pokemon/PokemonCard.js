@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import spinner from '../pokemon/pokeball.gif'
+import { Link } from 'react-router-dom'
 
 export default class PokemonCard extends Component {
     state = {
@@ -20,7 +21,11 @@ componentDidMount(){
 
     render() {
           return (
-            <div className="hover:bg-teal-600 hover:shadow-xl bg-red-600 max-w-sm rounded-lg overflow-hidden m-2">
+            <div 
+                className="transition duration-300 ease-in-out transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg bg-red-600 max-w-sm rounded-lg overflow-hidden m-2 shadow-md"
+                style={{ userSelect: "none" }} 
+            >
+                <Link to={`pokemon/${this.state.pokemonIndex}`}>
                 <div className="bg-gray-500 rounded m-2">
                     <h5 className="bg-gray-300 rounded overflow-hidden">{ this.state.pokemonIndex }</h5>
                     { this.state.imageLoading ? (
@@ -45,6 +50,7 @@ componentDidMount(){
                         }
                     </div>
                 </div>
+                </Link>
             </div>
         )
     }
