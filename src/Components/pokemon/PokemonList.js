@@ -9,7 +9,7 @@ export default class PokemonList extends Component {
     };
 
     async componentDidMount(){
-        const res = await axios.get(this.state.url, {params: {limit: 16}});
+        const res = await axios.get(this.state.url, {params: {limit: 151}});
         this.setState({ pokemon: res.data['results'] })
     }
 
