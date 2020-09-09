@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import PokemonCard from './PokemonCard'
 import axios from 'axios'
 
@@ -9,7 +9,7 @@ export default class PokemonList extends Component {
     };
 
     async componentDidMount(){
-        const res = await axios.get(this.state.url, {params: {limit: 60}});
+        const res = await axios.get(this.state.url, {params: {limit: 16}});
         this.setState({ pokemon: res.data['results'] })
     }
 
@@ -18,7 +18,7 @@ export default class PokemonList extends Component {
         <React.Fragment>
             { this.state.pokemon ? (
             <div>
-                <div class="grid md:grid-cols-3 lg:grid-cols-4">
+                <div className="grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
                 { this.state.pokemon.map(pokemon => (
                  <PokemonCard
                   key = { pokemon.name }
@@ -33,5 +33,6 @@ export default class PokemonList extends Component {
             )}
         </React.Fragment>
         );
-    }
-}
+    };
+};
+

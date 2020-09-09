@@ -5,7 +5,7 @@ function NavigationMenu(props){
     return (
         <div>
             <div className="font-bold py-3">
-                Gabriel's React
+                React Pokédex
             </div>
                 <ul>
                     <li>

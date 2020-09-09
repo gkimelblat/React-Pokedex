@@ -19,7 +19,7 @@ function App() {
      <Router>
         <Header />
 
-        <div className="p-3">
+        <div className="m-auto">
         <Switch>
           <Route exact path="/">
             <Home />
@@ -36,7 +36,7 @@ function App() {
 
         <Footer />
 
-      </Router>      
+      </Router>
     </div>
   );
 }

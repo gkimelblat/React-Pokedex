@@ -1,14 +1,13 @@
 import React from 'react';
-import Howdy from '../Components/ZaWarudo';
-
+import { Link } from "react-router-dom";
 
 function Home(){
     return(
-        <div>
-            <h1 className="font-bold text-2xl">Home</h1>
-
-            <Howdy name="Gabriel" />
-        </div>
+        <div className="lg:w-2/4 m-auto">
+            <Link to="/dashboard">
+                <img to="www.google.com" src="https://user-images.githubusercontent.com/41591007/92578101-1a630500-f294-11ea-9fd9-38ed3cc1c62a.png" />    
+            </Link>
+       </div>   
     )
 }
 
