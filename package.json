@@ -28,13 +28,16 @@
     "tsutils": "^3.17.1",
     "typescript-eslint": "^0.0.1-alpha.0"
   },
+
   "scripts": {
-    "build": "react-scripts build",
-    "devstart": "react-scripts start",
-    "start": "node server.js",
+    "build:css": "postcss src/index.css -o src/tailwind.css",
+    "watch:css": "postcss src/index.css -o src/tailwind.css -w",
+    "start": "yarn build:css && react-scripts start",
+    "build": "yarn build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
   "eslintConfig": {
     "extends": "react-app"
   },
