@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-function correctedCaps(x) {
-    x.toLowerCase().split('-').map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
-}
-
 const TYPE_COLORS = {
     bug: '#C3D21F',
     dark: '#8A6653',
@@ -164,10 +160,14 @@ export default class Pokemon extends Component {
                     </div>
 
                     <h5 className="bg-gray-300 rounded overflow-hidden"> { this.state.pokemonIndex } </h5>
-                    <div className="bg-white flex flex-wrap justify-center p-3">
-                        <img src={this.state.imageUrl} />
+                    <div className="bg-white p-3">
+                        <div className="text-center font-bold">
                         <h2>{this.state.name.toLowerCase().split('-').map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</h2>
-                        <div>
+                        </div>
+                        <div className="flex flex-wrap justify-center">
+                            <img src={this.state.imageUrl} />
+                        </div>
+                        <div className="text-center">
                             <h4>{this.state.description.toLowerCase().split('-').map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</h4>
                         </div>
                     </div>
